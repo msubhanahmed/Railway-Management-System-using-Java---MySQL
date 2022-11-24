@@ -14,6 +14,8 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("userinterface.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setTitle("UserInterface");
+			primaryStage.setMaximized(true);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
