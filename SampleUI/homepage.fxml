@@ -45,7 +45,7 @@
                      <children>
                         <BorderPane prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <left>
-                              <VBox prefHeight="497.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="497.0" prefWidth="721.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <AnchorPane prefHeight="496.0" prefWidth="721.0">
                                        <children>
@@ -65,7 +65,7 @@
                                                 <Image url="@ZafarZamanRanjha.jpg" />
                                              </image>
                                           </ImageView>
-                                          <Label layoutX="220.0" layoutY="35.0" prefHeight="31.0" prefWidth="293.0" text="Message From Chairman" textFill="WHITE">
+                                          <Label layoutX="220.0" layoutY="35.0" prefHeight="31.0" prefWidth="293.0" text="Message From Chairman">
                                              <font>
                                                 <Font name="Book Antiqua Bold" size="25.0" />
                                              </font>
