@@ -26,6 +26,58 @@ public class DB_Handler
 		}
 	}
 	
+	public Train getOneTrain(int id)
+	{
+		try {
+			Statement s = con.createStatement();
+			ResultSet r = s.executeQuery("Select * from PassengerTrain where ID="+id);
+			while(r.next())
+			{
+				// GET Schedule of this particular station first and pass it instead of null below
+				PassengerTrain c = new PassengerTrain(r.getInt(1), r.getString(2) , "Passenger Train" , r.getInt(3));
+				return c;			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ArrayList<PassengerTrain> getAllTrain()
+	{
+		ArrayList<PassengerTrain> t = new ArrayList<PassengerTrain>();
+		try {
+			Statement s = con.createStatement();
+			ResultSet r = s.executeQuery("Select * from PassengerTrain");
+			while(r.next())
+			{
+				// GET Schedule of this particular station first and pass it instead of null below
+				PassengerTrain c = new PassengerTrain(r.getInt(1), r.getString(2) , "Passenger Train" , r.getInt(3));
+				t.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return t;
+	}
+	public Station getOneStation(int id )
+	{
+		try {
+			Statement s = con.createStatement();
+			ResultSet r = s.executeQuery("Select * from station where ID="+id);
+			while(r.next())
+			{
+				// GET Schedule of this particular station first and pass it instead of null below
+				Station c = new Station(r.getInt(1), r.getString(2) , r.getString(3) , null);
+				return c;				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public ArrayList<Station> loadAllStation()
 	{
 		ArrayList<Station> clist = new ArrayList<Station>();
@@ -37,7 +89,7 @@ public class DB_Handler
 			while(r.next())
 			{
 				// GET Schedule of this particular station first and pass it instead of null below
-				Station c = new Station(r.getInt(1), r.getString(2) , r.getString(3) , null);
+				Station c = new Station(r.getInt(1), r.getString(2) , r.getString(3) , getStationSchedule(r.getInt(1)));
 				clist.add(c);				
 			}
 		}
@@ -50,6 +102,48 @@ public class DB_Handler
 	}
 	public ScheduleBoard getStationSchedule(int Station_ID)
 	{
-		return null;
+		ScheduleBoard sb = new ScheduleBoard();
+		String query = "Select * from ScheduleEntry";
+		
+		try {
+			Statement s = con.createStatement();
+			ResultSet r = s.executeQuery(query);
+			while(r.next())
+			{
+				if(getOneStation(r.getInt(3)).getID() == Station_ID || getOneStation(r.getInt(4)).getID() == Station_ID)
+				{
+					ScheduleEntry e = new ScheduleEntry(r.getInt(1) , getOneTrain(r.getInt(2)).getName() , getOneStation(r.getInt(3)).getName() , getOneStation(r.getInt(4)).getName() , r.getString(5) , r.getString(6) );
+					sb.addnewEntry(e);
+				}
+				
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return sb;
+	}
+
+	public void saveTicket(Ticket t)
+	{
+		String q = "Insert into Ticket values (?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement pq = con.prepareStatement(q);
+			pq.setInt(1,t.getID());
+			pq.setString(2, t.getSource());
+			pq.setString(3, t.getDestination());
+			pq.setString(4, t.getTrainID());
+			pq.setString(5, t.getValidity());
+			pq.setInt(6,t.getPrice());
+			pq.setInt(7,t.getSeats());
+			pq.setInt(8, 202445);
+			
+			pq.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

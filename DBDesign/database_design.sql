@@ -27,18 +27,20 @@ create table FreightTrain
 create table PassengerTrain
 (
 	ID				integer			primary key,
-    Name			varchar(255),
+    Name			varchar(255)	UNIQUE,
     MaxCapacity		integer
 );
+
 create table Ticket
 (
 	ID			integer 	primary key,
-    TrainId		integer,
+    Source		varchar(255),
+    Destination	varchar(255),
+    Train		varchar(255),
     validity	varchar(255),
     price		integer,
     seats		integer,
     PassengerID	integer,
-    foreign key(TrainId) references PassengerTrain(ID)  on delete cascade,
     foreign key(PassengerID) references passenger(ID) on delete cascade
 );
 create table FreightBooking

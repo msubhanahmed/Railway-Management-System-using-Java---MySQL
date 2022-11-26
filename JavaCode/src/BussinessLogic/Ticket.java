@@ -2,14 +2,22 @@ package BussinessLogic;
 
 public class Ticket 
 {
+	static int sid = 7865;
 	private int ID;
-	private int TrainID;
+	private String Source;
+	private String Destination;
+	private String TrainID;
 	private int price;
+	private int seats;
 	private String validity;
-	public Ticket(int iD, int trainID, int price, String validity) {
-		ID = iD;
+	
+	public Ticket(String source, String destination, String trainID, int price , int s, String validity) {
+		ID = ++sid;
+		Source = source;
+		Destination = destination;
 		TrainID = trainID;
 		this.price = price;
+		this.seats = s;
 		this.validity = validity;
 	}
 	public int getID() {
@@ -17,12 +25,6 @@ public class Ticket
 	}
 	public void setID(int iD) {
 		ID = iD;
-	}
-	public int getTrainID() {
-		return TrainID;
-	}
-	public void setTrainID(int trainID) {
-		TrainID = trainID;
 	}
 	public int getPrice() {
 		return price;
@@ -35,6 +37,30 @@ public class Ticket
 	}
 	public void setValidity(String validity) {
 		this.validity = validity;
+	}
+	public String getSource() {
+		return Source;
+	}
+	public void setSource(String source) {
+		Source = source;
+	}
+	public String getDestination() {
+		return Destination;
+	}
+	public void setDestination(String destination) {
+		Destination = destination;
+	}
+	public void setTrainID(String trainID) {
+		TrainID = trainID;
+	}
+	public String getTrainID() {
+		return TrainID;
+	}
+	public int getSeats() {
+		return seats;
+	}
+	public void setSeats(int seats) {
+		this.seats = seats;
 	}
 	
 }

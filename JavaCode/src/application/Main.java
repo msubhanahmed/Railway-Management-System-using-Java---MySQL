@@ -9,14 +9,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.*;
-import javafx.scene.layout.*;
 
 
 public class Main extends Application {
 	FXMLLoader loader = new FXMLLoader();
+	Stage stg;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			stg = primaryStage;
 			Parent root = FXMLLoader.load(getClass().getResource("userinterface.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -33,8 +34,20 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public void changeScene(Stage currentStage , String filename) throws IOException {
+	public void changeScene(String filename) throws IOException {
 		
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("AdminInterface.fxml"));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stg.setTitle("UserInterface");
+			stg.setMaximized(true);
+			stg.setScene(scene);
+			stg.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		/*
 		try {
 			FileInputStream fxmlStream = new FileInputStream("E:\\Classes\\SDA\\SemesterProject\\JavaCode\\src\\application\\AdminInterface.fxml");
 			Parent pane = loader.load(fxmlStream);
@@ -50,7 +63,7 @@ public class Main extends Application {
 			// TODO Auto-generated catch block
 			System.out.println("IO Exception.");
 			//e.printStackTrace();
-		}
+		}*/
 		
 	}
 

@@ -1,9 +1,11 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import BussinessLogic.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -101,7 +104,7 @@ public class UserController {
     private TableColumn<?, ?> Sch_station_src;
 
     @FXML
-    private TableView<?> Sch_station_table;
+    private TableView<ScheduleEntry> Sch_station_table;
 
     @FXML
     private TableColumn<?, ?> Sch_station_train;
@@ -339,9 +342,41 @@ public class UserController {
 			e.printStackTrace();
 		}
     }
-
+    
     @FXML
-    void initialize() {
+    public void reserveTicket(ActionEvent event)
+    {
+    	String src = TR_station_choice.getValue().toString();
+    	String dest = TR_dest_choice.getValue().toString();
+    	String train = TR_class_choice.getValue().toString();
+    	String seats = TR_seats_choice.getValue().toString();
+    	TC.reserveTicket(src,dest,train,Integer.parseInt(seats));
+    }
+    @FXML
+    void getStationSchedule(ActionEvent event)
+    {
+    	Sch_station_id.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        Sch_station_src.setCellValueFactory(new PropertyValueFactory<>("Src"));
+        Sch_station_dest.setCellValueFactory(new PropertyValueFactory<>("Dest"));
+        Sch_station_depart.setCellValueFactory(new PropertyValueFactory<>("arrival"));
+        Sch_station_arrival.setCellValueFactory(new PropertyValueFactory<>("dept"));
+        Sch_station_train.setCellValueFactory(new PropertyValueFactory<>("Train"));
+        
+    	if(Sch_station_choice.getValue()!=null)
+    	{
+    		ArrayList<ScheduleEntry> a = TC.GetSchedule(Sch_station_choice.getValue().toString());
+    		ObservableList<ScheduleEntry> list = FXCollections.observableArrayList();
+    		for(ScheduleEntry e:a)
+    		{
+    			list.add(e);
+    		}
+    		Sch_station_table.setItems(list);
+    	}
+    }
+    @SuppressWarnings("unchecked")
+	@FXML
+    void initialize() 
+    {
         assert CalculateFare_tab != null : "fx:id=\"CalculateFare_tab\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert Cfare_calculate_btn != null : "fx:id=\"Cfare_calculate_btn\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert Cfare_class != null : "fx:id=\"Cfare_class\" was not injected: check your FXML file 'userinterface.fxml'.";
@@ -440,7 +475,51 @@ public class UserController {
         assert view_mob_user != null : "fx:id=\"view_mob_user\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert view_pass != null : "fx:id=\"view_pass\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert view_pass_user != null : "fx:id=\"view_pass_user\" was not injected: check your FXML file 'userinterface.fxml'.";
-
+        
+        try {
+        	
+        	// Add source
+        	
+			@SuppressWarnings("unchecked")
+			ObservableList<String> list = (ObservableList<String>) TR_station_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				list.add(name);
+			}
+			
+			// Add Destination
+			
+			ObservableList<String> list2 = (ObservableList<String>) TR_dest_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				list2.add(name);
+			}
+			// Add Trains
+			ObservableList<String> list3 = (ObservableList<String>) TR_class_choice.getItems();
+			for(PassengerTrain s: TC.getPTrains())
+			{
+				String name = s.getName();
+				list3.add(name);
+			}
+			// Add Seats
+			
+			ObservableList<String> list4 = (ObservableList<String>) TR_seats_choice.getItems();
+			for(int i=1 ; i<6 ; i++)
+			{
+				String name = i + "0";
+				list4.add(name);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
     }
 
 }

@@ -181,13 +181,6 @@ public class Admin_Controller {
     @FXML
     private ChoiceBox<?> select_station_delete_ID;
 
-    @FXML
-    void switch_to_userinterface(ActionEvent event) throws IOException 
-    {
-
-		Stage s=(Stage)((Node)event.getSource()).getScene().getWindow();
-		m.changeScene(s , "userinterface.fxml");
-    }
 
     @FXML
     void initialize() {

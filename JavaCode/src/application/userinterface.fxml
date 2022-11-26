@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
    <top>
@@ -38,10 +24,10 @@
    </top>
    <center>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="375.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab fx:id="Home_tab" text="Home">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="663.0" prefWidth="731.0">
+         <tabs>
+            <Tab fx:id="Home_tab" text="Home">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="663.0" prefWidth="731.0">
                      <children>
                         <BorderPane prefHeight="661.0" prefWidth="707.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="0.0">
                            <left>
@@ -49,7 +35,7 @@
                                  <children>
                                     <AnchorPane prefHeight="558.0" prefWidth="639.0">
                                        <children>
-                                          <ImageView fx:id="home_dest_img" fitHeight="243.0" fitWidth="715.0" layoutX="-1.0" layoutY="336.0" pickOnBounds="true">
+                                          <ImageView fx:id="home_dest_img" layoutX="14.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@Screenshot%202022-11-25%20135935.jpg" />
                                              </image>
@@ -59,21 +45,22 @@
                                                 <Font name="Arial Rounded MT Bold" size="25.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="home_msg" layoutX="222.0" layoutY="74.0" prefHeight="220.0" prefWidth="462.0" text="Mr. Zafar Zaman Ranjha has been educated in the most prestigious institutions of the country. He holds Master’s Degrees in English Literature and Business Administration. He joined Central Superior Services through competitive examination held by FPSC in 1988 and was inducted into Railways (C&amp;T) Group. He belongs to the 16th Common Training Program (16th CTP). After completing training from Civil Services Academy, he was posted as Assistant Commercial Officer Karachi, Assistant Transportation Officer, Quetta." wrapText="true">
+                                          <Label fx:id="home_msg" layoutX="206.0" layoutY="65.0" maxWidth="1.7976931348623157E308" prefHeight="198.0" prefWidth="491.0" text="Mr. Zafar Zaman Ranjha has been educated in the most prestigious institutions of the country. He holds Master’s Degrees in English Literature and Business Administration. He joined Central Superior Services through competitive examination held by FPSC in 1988 and was inducted into Railways (C&amp;T) Group. He belongs to the 16th Common Training Program (16th CTP). After completing training from Civil Services Academy, he was posted as Assistant Commercial Officer Karachi, Assistant Transportation Officer, Quetta." wrapText="true">
                                              <font>
                                                 <Font size="14.0" />
-                                             </font></Label>
-                                          <ImageView fx:id="home_img_chairman" fitHeight="200.0" fitWidth="179.0" layoutX="31.0" layoutY="81.0" pickOnBounds="true">
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="home_img_chairman" fitHeight="200.0" fitWidth="179.0" layoutX="14.0" layoutY="65.0" pickOnBounds="true">
                                              <image>
                                                 <Image url="@ZafarZamanRanjha.jpg" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="home_msg_txt" layoutX="14.0" layoutY="33.0" prefHeight="31.0" prefWidth="325.0" text="Message From Chairman">
+                                          <Label fx:id="home_msg_txt" layoutX="14.0" layoutY="34.0" prefHeight="31.0" prefWidth="325.0" text="Message From Chairman">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="25.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="home_chairman_name" layoutX="222.0" layoutY="74.0" text="Mr. Zafar Zaman Ranjha">
+                                          <Label fx:id="home_chairman_name" layoutX="206.0" layoutY="65.0" text="Mr. Zafar Zaman Ranjha">
                                              <font>
                                                 <Font name="Arial Rounded MT Bold" size="22.0" />
                                              </font>
@@ -86,30 +73,30 @@
                         </BorderPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="Schedule_tab" text="Schedule">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               </content>
+            </Tab>
+            <Tab fx:id="Schedule_tab" text="Schedule">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <ChoiceBox fx:id="Sch_station_choice" layoutX="95.0" layoutY="10.0" prefWidth="150.0" />
                         <Label fx:id="Sch_station" layoutX="29.0" layoutY="14.0" text="Station" />
-                        <Button fx:id="Sch_station_search_btn" layoutX="248.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
-                        <TableView fx:id="Sch_station_table" layoutX="95.0" layoutY="45.0" prefHeight="200.0" prefWidth="453.0">
-                          <columns>
-                            <TableColumn fx:id="Sch_station_id" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="Sch_station_src" prefWidth="75.0" text="Source" />
+                        <Button fx:id="Sch_station_search_btn" layoutX="248.0" layoutY="10.0" mnemonicParsing="false" onAction="#getStationSchedule" text="Search" />
+                        <TableView fx:id="Sch_station_table" layoutX="95.0" layoutY="45.0" prefHeight="200.0" prefWidth="602.0">
+                           <columns>
+                              <TableColumn fx:id="Sch_station_id" prefWidth="54.0" text="ID" />
+                              <TableColumn fx:id="Sch_station_src" prefWidth="96.0" text="Source" />
                               <TableColumn fx:id="Sch_station_dest" prefWidth="75.0" text="Destination" />
-                              <TableColumn fx:id="Sch_station_depart" prefWidth="75.0" text="Departure" />
-                              <TableColumn fx:id="Sch_station_arrival" prefWidth="75.0" text="Arrival" />
-                              <TableColumn fx:id="Sch_station_train" prefWidth="75.0" text="Train" />
-                          </columns>
+                              <TableColumn fx:id="Sch_station_depart" prefWidth="103.0" text="Departure" />
+                              <TableColumn fx:id="Sch_station_arrival" prefWidth="137.0" text="Arrival" />
+                              <TableColumn fx:id="Sch_station_train" prefWidth="136.0" text="Train" />
+                           </columns>
                         </TableView>
-                        <Button fx:id="Sch_station_search_btn1" layoutX="308.0" layoutY="10.0" mnemonicParsing="false" onAction="#fetchstations" text="LoadStations" />
+                        <Button fx:id="schedule_load_station_btn" layoutX="308.0" layoutY="10.0" mnemonicParsing="false" onAction="#fetchstations" text="LoadStations" />
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
+               </content>
+            </Tab>
             <Tab fx:id="TicketReservation_tab" text="Ticket Reservation">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -119,13 +106,13 @@
                         <ChoiceBox fx:id="TR_class_choice" layoutX="109.0" layoutY="100.0" prefWidth="150.0" />
                         <Label fx:id="TR_dest" layoutX="14.0" layoutY="73.0" prefHeight="23.0" prefWidth="81.0" text="Destination" />
                         <ChoiceBox fx:id="TR_dest_choice" layoutX="109.0" layoutY="72.0" prefWidth="150.0" />
-                        <Label fx:id="TR_class" layoutX="14.0" layoutY="102.0" prefHeight="23.0" prefWidth="81.0" text="Class" />
+                        <Label fx:id="TR_class" layoutX="14.0" layoutY="102.0" prefHeight="23.0" prefWidth="81.0" text="Train" />
                         <ChoiceBox fx:id="TR_seats_choice" layoutX="110.0" layoutY="128.0" prefWidth="150.0" />
                         <Label fx:id="TR_seats" layoutX="14.0" layoutY="129.0" prefHeight="23.0" prefWidth="81.0" text="Seats #" />
-                        <Button fx:id="TR_reserve_btn" layoutX="112.0" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Reserve" />
+                        <Button fx:id="TR_reserve_btn" layoutX="112.0" layoutY="191.0" mnemonicParsing="false" onAction="#reserveTicket" prefHeight="25.0" prefWidth="155.0" text="Reserve" />
                         <Label fx:id="TR_BankAcc" layoutX="14.0" layoutY="158.0" prefHeight="23.0" prefWidth="81.0" text="Bank Account#" />
                         <TextField fx:id="TR_BankAcc_user" layoutX="111.0" layoutY="156.0" />
-                        <Label fx:id="TR_err_" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="325.0" text="For Errors! Disable this and enable when error occurs" textFill="RED" />
+                        <Label fx:id="TR_err_" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="325.0" text="For Errors! Disable this and enable when error occurs" textFill="RED" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -169,16 +156,16 @@
                </content>
             </Tab>
             <Tab fx:id="MyAccount_tab" text="My Account">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
                               <Accordion BorderPane.alignment="CENTER">
-                                <panes>
-                                  <TitledPane fx:id="login_titiledpane" animated="false" text="Account Login">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <panes>
+                                    <TitledPane fx:id="login_titiledpane" animated="false" text="Account Login">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label fx:id="login_mob" layoutX="188.0" layoutY="215.0" text="Mobile No." />
                                                 <Label fx:id="login_email" layoutX="188.0" layoutY="174.0" text="Email Address" />
@@ -192,12 +179,13 @@
                                                    </image>
                                                 </ImageView>
                                                 <TextField fx:id="login_email_user" layoutX="281.0" layoutY="170.0" promptText="abc@gmail.com" />
-                                             </children></AnchorPane>
-                                    </content>
-                                  </TitledPane>
-                                  <TitledPane fx:id="signup_titledpane" animated="false" prefHeight="450.0" prefWidth="706.0" text="Create New Account">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane fx:id="signup_titledpane" animated="false" prefHeight="450.0" prefWidth="706.0" text="Create New Account">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label fx:id="sign_fname" layoutX="162.0" layoutY="100.0" text="First Name" />
                                                 <Label fx:id="sign_lname" layoutX="162.0" layoutY="140.0" text="Last Name" />
@@ -218,9 +206,10 @@
                                                       <Image url="@image-removebg-preview.png" />
                                                    </image>
                                                 </ImageView>
-                                             </children></AnchorPane>
-                                    </content>
-                                  </TitledPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
                                     <TitledPane fx:id="ViewProfile_titiledPane" animated="false" layoutX="10.0" layoutY="35.0" text="View Profile">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -241,15 +230,15 @@
                                           </AnchorPane>
                                        </content>
                                     </TitledPane>
-                                </panes>
+                                 </panes>
                               </Accordion>
                            </center>
                         </BorderPane>
                      </children>
                   </AnchorPane>
-              </content>
+               </content>
             </Tab>
-        </tabs>
+         </tabs>
       </TabPane>
    </center>
    <bottom>
