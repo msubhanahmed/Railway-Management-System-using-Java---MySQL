@@ -36,7 +36,8 @@ public class DB_Handler
 			ResultSet r = s.executeQuery(query);
 			while(r.next())
 			{
-				Station c = new Station(r.getInt(1), r.getString(2) , r.getString(3));
+				// GET Schedule of this particular station first and pass it instead of null below
+				Station c = new Station(r.getInt(1), r.getString(2) , r.getString(3) , null);
 				clist.add(c);				
 			}
 		}
@@ -46,5 +47,9 @@ public class DB_Handler
 		}
 		
 		return clist;
+	}
+	public ScheduleBoard getStationSchedule(int Station_ID)
+	{
+		return null;
 	}
 }

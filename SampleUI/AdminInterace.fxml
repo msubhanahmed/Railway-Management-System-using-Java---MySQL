@@ -44,11 +44,12 @@
                           <columns>
                             <TableColumn prefWidth="75.0" text="ID" />
                             <TableColumn prefWidth="106.0" text="Station Name" />
+                              <TableColumn prefWidth="106.0" text="Phone" />
                           </columns>
                         </TableView>
                         <Label layoutX="14.0" layoutY="20.0" text="Create New Station" />
-                        <TextField layoutX="143.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" />
-                        <TextField layoutX="311.0" layoutY="16.0" prefHeight="25.0" prefWidth="143.0" />
+                        <TextField layoutX="143.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" promptText="Name" />
+                        <TextField layoutX="311.0" layoutY="16.0" prefHeight="25.0" prefWidth="143.0" promptText="Phone" />
                         <Button layoutX="463.0" layoutY="16.0" mnemonicParsing="false" text="Create" />
                         <Label layoutX="14.0" layoutY="54.0" text="Delete Station" />
                         <Button layoutX="298.0" layoutY="50.0" mnemonicParsing="false" text="Delete" />
@@ -65,22 +66,22 @@
                         <TableView layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
                            <columns>
                               <TableColumn prefWidth="56.0" text="ID" />
-                              <TableColumn prefWidth="104.0" text="Station Name" />
-                              <TableColumn prefWidth="118.0" text="Source" />
-                              <TableColumn prefWidth="106.0" text="Destination" />
-                              <TableColumn prefWidth="106.0" text="Time" />
+                              <TableColumn prefWidth="104.0" text="Source" />
+                              <TableColumn prefWidth="118.0" text="Destination" />
+                              <TableColumn prefWidth="106.0" text="Arrival" />
+                              <TableColumn prefWidth="106.0" text="Departure" />
                            </columns>
                         </TableView>
                         <Label layoutX="14.0" layoutY="27.0" text="Create New Schedule" />
-                        <TextField layoutX="289.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" />
+                        <TextField layoutX="289.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Destination" />
                         <Button layoutX="445.0" layoutY="60.0" mnemonicParsing="false" text="Create" />
                         <Label layoutX="14.0" layoutY="122.0" text="Delete Schedule" />
                         <Button layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
                         <Button layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
-                        <TextField layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" />
+                        <TextField layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Source" />
                         <ChoiceBox layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
-                        <TextField layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" />
-                        <TextField layoutX="289.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" />
+                        <TextField layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Departure" />
+                        <TextField layoutX="289.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Arrival" />
                      </children>
                   </AnchorPane>
                </content>
@@ -89,16 +90,23 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ChoiceBox layoutX="99.0" layoutY="27.0" prefWidth="150.0" />
-                        <Label layoutX="14.0" layoutY="28.0" prefHeight="23.0" prefWidth="81.0" text="Station" />
-                        <ChoiceBox layoutX="99.0" layoutY="64.0" prefWidth="150.0" />
-                        <Label layoutX="14.0" layoutY="65.0" prefHeight="23.0" prefWidth="81.0" text="Destination" />
-                        <ChoiceBox layoutX="99.0" layoutY="98.0" prefWidth="150.0" />
-                        <Label layoutX="14.0" layoutY="99.0" prefHeight="23.0" prefWidth="81.0" text="Class" />
-                        <ChoiceBox layoutX="99.0" layoutY="130.0" prefWidth="150.0" />
-                        <Label layoutX="14.0" layoutY="131.0" prefHeight="23.0" prefWidth="81.0" text="Seats #" />
-                        <Button layoutX="97.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Calculate" />
-                        <TextField editable="false" layoutX="269.0" layoutY="166.0" promptText="Fare" />
+                        <TableView layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
+                           <columns>
+                              <TableColumn prefWidth="56.0" text="ID" />
+                              <TableColumn prefWidth="104.0" text="Name" />
+                              <TableColumn prefWidth="118.0" text="Type" />
+                              <TableColumn prefWidth="106.0" text="Max Capacity" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="27.0" text="Add New Train" />
+                        <Button layoutX="456.0" layoutY="23.0" mnemonicParsing="false" text="Create" />
+                        <Label layoutX="14.0" layoutY="122.0" text="Delete Train" />
+                        <Button layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
+                        <Button layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
+                        <TextField layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Name" />
+                        <ChoiceBox layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
+                        <TextField layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Max Capacity" />
+                        <ChoiceBox layoutX="286.0" layoutY="23.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -119,11 +127,11 @@
                                     <Label layoutX="110.0" layoutY="93.0" text="CNIC No." />
                                     <Label layoutX="110.0" layoutY="183.0" text="Mobile No." />
                                     <Label layoutX="110.0" layoutY="228.0" text="Password" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="44.0" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="89.0" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="132.0" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="224.0" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="179.0" />
+                                    <TextField editable="false" layoutX="205.0" layoutY="44.0" promptText="Name" />
+                                    <TextField editable="false" layoutX="205.0" layoutY="89.0" promptText="CNIC" />
+                                    <TextField editable="false" layoutX="205.0" layoutY="132.0" promptText="email@gmail.com" />
+                                    <TextField accessibleRole="PASSWORD_FIELD" accessibleRoleDescription="PASSWORD_FEILD" editable="false" layoutX="205.0" layoutY="224.0" promptText="******************" />
+                                    <TextField editable="false" layoutX="205.0" layoutY="179.0" promptText="030********" />
                                  </children>
                               </AnchorPane>
                            </top>
