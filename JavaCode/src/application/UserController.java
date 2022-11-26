@@ -12,7 +12,8 @@ import BussinessLogic.*;
 
 public class UserController
 {
-	StationList sl = new StationList();
+	/* Business Logic Controller Class_____ Use this class to call all necessary BL functions*/
+	Ticket_Counter TC = new Ticket_Counter();
 	
     @FXML
     private ResourceBundle resources;
@@ -29,12 +30,19 @@ public class UserController
     @FXML
     void fetchstations(ActionEvent event) 
     {
-    	ObservableList<String> list = (ObservableList<String>) schedulestationlist.getItems();
-    	for(Station s: sl.getSl())
-    	{
-    		String name = s.getName();
-    		list.add(name);
-    	}
+    	
+    	try {
+			@SuppressWarnings("unchecked")
+			ObservableList<String> list = (ObservableList<String>) schedulestationlist.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				list.add(name);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
