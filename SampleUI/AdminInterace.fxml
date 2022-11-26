@@ -36,82 +36,82 @@
    <center>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="375.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Manage Stations">
+          <Tab fx:id="ManageStation_Tab" text="Manage Stations">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView layoutX="143.0" layoutY="125.0" prefHeight="166.0" prefWidth="436.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="106.0" text="Station Name" />
-                              <TableColumn prefWidth="106.0" text="Phone" />
+                            <TableColumn fx:id="mng_station_ID_col" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="mng_station_name_col" prefWidth="106.0" text="Station Name" />
+                              <TableColumn fx:id="mng_station_phone_col" prefWidth="106.0" text="Phone" />
                           </columns>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="20.0" text="Create New Station" />
-                        <TextField layoutX="143.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" promptText="Name" />
-                        <TextField layoutX="311.0" layoutY="16.0" prefHeight="25.0" prefWidth="143.0" promptText="Phone" />
-                        <Button layoutX="463.0" layoutY="16.0" mnemonicParsing="false" text="Create" />
-                        <Label layoutX="14.0" layoutY="54.0" text="Delete Station" />
-                        <Button layoutX="298.0" layoutY="50.0" mnemonicParsing="false" text="Delete" />
-                        <ChoiceBox layoutX="143.0" layoutY="50.0" prefWidth="150.0" />
-                        <Button layoutX="143.0" layoutY="87.0" mnemonicParsing="false" text="Refresh Table" />
+                        <Label fx:id="createstationlabel" layoutX="14.0" layoutY="20.0" text="Create New Station" />
+                        <TextField fx:id="new_station_name" layoutX="143.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" promptText="Name" />
+                        <TextField fx:id="new_station_number" layoutX="311.0" layoutY="16.0" prefHeight="25.0" prefWidth="143.0" promptText="Phone" />
+                        <Button fx:id="create_station_btn" layoutX="463.0" layoutY="16.0" mnemonicParsing="false" text="Create" />
+                        <Label fx:id="deletestationlabel" layoutX="14.0" layoutY="54.0" text="Delete Station" />
+                        <Button fx:id="delete_station_btn" layoutX="298.0" layoutY="50.0" mnemonicParsing="false" text="Delete" />
+                        <ChoiceBox fx:id="select_station_delete_ID" layoutX="143.0" layoutY="50.0" prefWidth="150.0" />
+                        <Button fx:id="refresh_station_table" layoutX="143.0" layoutY="87.0" mnemonicParsing="false" text="Refresh Table" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Manage Schedule">
+            <Tab fx:id="mng_schedule_tab" text="Manage Schedule">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
+                        <TableView fx:id="del_schedule_table" layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
                            <columns>
-                              <TableColumn prefWidth="56.0" text="ID" />
-                              <TableColumn prefWidth="104.0" text="Source" />
-                              <TableColumn prefWidth="118.0" text="Destination" />
-                              <TableColumn prefWidth="106.0" text="Arrival" />
-                              <TableColumn prefWidth="106.0" text="Departure" />
+                              <TableColumn fx:id="del_schedule_ID_col" prefWidth="56.0" text="ID" />
+                              <TableColumn fx:id="del_schedule_source_col" prefWidth="104.0" text="Source" />
+                              <TableColumn fx:id="del_schedule_dest_col" prefWidth="118.0" text="Destination" />
+                              <TableColumn fx:id="del_schedule_arriv_col" prefWidth="106.0" text="Arrival" />
+                              <TableColumn fx:id="del_schedule_dept_col" prefWidth="106.0" text="Departure" />
                            </columns>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="27.0" text="Create New Schedule" />
-                        <TextField layoutX="289.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Destination" />
-                        <Button layoutX="445.0" layoutY="60.0" mnemonicParsing="false" text="Create" />
-                        <Label layoutX="14.0" layoutY="122.0" text="Delete Schedule" />
-                        <Button layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
-                        <Button layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
-                        <TextField layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Source" />
-                        <ChoiceBox layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
-                        <TextField layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Departure" />
-                        <TextField layoutX="289.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Arrival" />
+                        <Label fx:id="crt_station_label" layoutX="14.0" layoutY="27.0" text="Create New Schedule" />
+                        <TextField fx:id="crt_station_dest" layoutX="289.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Destination" />
+                        <Button fx:id="crt_station_btn" layoutX="445.0" layoutY="60.0" mnemonicParsing="false" text="Create" />
+                        <Label fx:id="del_schedule_label" layoutX="14.0" layoutY="122.0" text="Delete Schedule" />
+                        <Button fx:id="del_schedule_btn" layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
+                        <Button fx:id="del_schedule_refresh_btn" layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
+                        <TextField fx:id="crt_station_source" layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Source" />
+                        <ChoiceBox fx:id="del_schedule_ID_selector" layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
+                        <TextField fx:id="crt_station_dept" layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Departure" />
+                        <TextField fx:id="crt_station_arrival" layoutX="289.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Arrival" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Manage Trains">
+            <Tab fx:id="mng_train_tab" text="Manage Trains">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
+                        <TableView fx:id="mng_train_table" layoutX="133.0" layoutY="185.0" prefHeight="166.0" prefWidth="540.0">
                            <columns>
-                              <TableColumn prefWidth="56.0" text="ID" />
-                              <TableColumn prefWidth="104.0" text="Name" />
-                              <TableColumn prefWidth="118.0" text="Type" />
-                              <TableColumn prefWidth="106.0" text="Max Capacity" />
+                              <TableColumn fx:id="mng_train_id_col" prefWidth="56.0" text="ID" />
+                              <TableColumn fx:id="mng_train_name_col" prefWidth="104.0" text="Name" />
+                              <TableColumn fx:id="mng_train_type_col" prefWidth="118.0" text="Type" />
+                              <TableColumn fx:id="mng_train_maxload_col" prefWidth="106.0" text="Max Capacity" />
                            </columns>
                         </TableView>
-                        <Label layoutX="14.0" layoutY="27.0" text="Add New Train" />
-                        <Button layoutX="456.0" layoutY="23.0" mnemonicParsing="false" text="Create" />
-                        <Label layoutX="14.0" layoutY="122.0" text="Delete Train" />
-                        <Button layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
-                        <Button layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
-                        <TextField layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Name" />
-                        <ChoiceBox layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
-                        <TextField layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Max Capacity" />
-                        <ChoiceBox layoutX="286.0" layoutY="23.0" prefWidth="150.0" />
+                        <Label fx:id="mng_train_add_label" layoutX="14.0" layoutY="27.0" text="Add New Train" />
+                        <Button fx:id="add_train_btn" layoutX="456.0" layoutY="23.0" mnemonicParsing="false" text="Create" />
+                        <Label fx:id="del_train_label" layoutX="14.0" layoutY="122.0" text="Delete Train" />
+                        <Button fx:id="del_train_btn" layoutX="290.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
+                        <Button fx:id="mng_train_refresh_table" layoutX="133.0" layoutY="153.0" mnemonicParsing="false" text="Refresh Table" />
+                        <TextField fx:id="add_train_name" layoutX="133.0" layoutY="23.0" prefHeight="25.0" prefWidth="143.0" promptText="Name" />
+                        <ChoiceBox fx:id="del_train_id_selector" layoutX="133.0" layoutY="118.0" prefWidth="150.0" />
+                        <TextField fx:id="add_train_maxload" layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="143.0" promptText="Max Capacity" />
+                        <ChoiceBox fx:id="add_train_type_selector" layoutX="286.0" layoutY="23.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Account Information">
+            <Tab fx:id="account_info_tab" text="Account Information">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -120,18 +120,18 @@
                               <Accordion BorderPane.alignment="CENTER" />
                            </center>
                            <top>
-                              <AnchorPane prefHeight="371.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+                              <AnchorPane fx:id="acc_mobile" prefHeight="371.0" prefWidth="721.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Label layoutX="110.0" layoutY="48.0" prefHeight="24.0" prefWidth="47.0" text="Name" />
-                                    <Label layoutX="110.0" layoutY="136.0" text="Email Address" />
-                                    <Label layoutX="110.0" layoutY="93.0" text="CNIC No." />
-                                    <Label layoutX="110.0" layoutY="183.0" text="Mobile No." />
-                                    <Label layoutX="110.0" layoutY="228.0" text="Password" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="44.0" promptText="Name" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="89.0" promptText="CNIC" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="132.0" promptText="email@gmail.com" />
-                                    <TextField accessibleRole="PASSWORD_FIELD" accessibleRoleDescription="PASSWORD_FEILD" editable="false" layoutX="205.0" layoutY="224.0" promptText="******************" />
-                                    <TextField editable="false" layoutX="205.0" layoutY="179.0" promptText="030********" />
+                                    <Label fx:id="acc_name_label" layoutX="110.0" layoutY="48.0" prefHeight="24.0" prefWidth="47.0" text="Name" />
+                                    <Label fx:id="acc_email_label" layoutX="110.0" layoutY="136.0" text="Email Address" />
+                                    <Label fx:id="acc_cnic_label" layoutX="110.0" layoutY="93.0" text="CNIC No." />
+                                    <Label fx:id="acc_mobile_label" layoutX="110.0" layoutY="183.0" text="Mobile No." />
+                                    <Label fx:id="acc_password_label" layoutX="110.0" layoutY="228.0" text="Password" />
+                                    <TextField fx:id="acc_name" editable="false" layoutX="205.0" layoutY="44.0" promptText="Name" />
+                                    <TextField fx:id="acc_cnic" editable="false" layoutX="205.0" layoutY="89.0" promptText="CNIC" />
+                                    <TextField fx:id="acc_email" editable="false" layoutX="205.0" layoutY="132.0" promptText="email@gmail.com" />
+                                    <TextField fx:id="acc_password" accessibleRole="PASSWORD_FIELD" accessibleRoleDescription="PASSWORD_FEILD" editable="false" layoutX="205.0" layoutY="224.0" promptText="******************" />
+                                    <TextField fx:id="acc_mobile" editable="false" layoutX="205.0" layoutY="179.0" promptText="030********" />
                                  </children>
                               </AnchorPane>
                            </top>
