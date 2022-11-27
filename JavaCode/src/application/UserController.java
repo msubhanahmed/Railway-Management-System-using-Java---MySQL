@@ -24,6 +24,8 @@ import javafx.scene.text.Text;
 
 public class UserController {
 
+	
+	private Passenger p1 = null;
 	Ticket_Counter TC = new Ticket_Counter();
     @FXML
     private ResourceBundle resources;
@@ -418,31 +420,37 @@ public class UserController {
     	Cfare_display.setText(String.valueOf(fare));
     	}
     
-    /*
+    }
     
-    Admin d2 = new Admin();
-    void  account_info_tab()
+    public void login() 
     {
-    	Admin d = d2.AdminGetInfo();
-    	acc_name.setText(d.getFname() +" "+ d.getLname()); 
-    	acc_cnic.setText(d.getCnic());
-    	acc_email.setText(d.getEmail());
-    	acc_mobile.setText(d.getPhone());
-    	acc_password.setText(d.getPsd());
-    }*/
+    	p1 = TC.login(login_email_user.getText().toString(),login_pass_user.getText().toString() );
+    	viewAccount();
+    }
     
-    Passenger p1 = new Passenger();
+    public void INSERT() 
+    {
+    	p1 = TC.Insert(sign_fname_user.getText().toString(),sign_lname_user.getText().toString(),sign_mail_user.getText().toString(),sign_mob_user.getText().toString(),sign_cnic_user.getText().toString(),sign_pass_user.getText().toString());	
+    }
+    
+    
+    
+    
+    
+
     void viewAccount() {
-    	Passenger p = p1.PassengerGetInfo();
     	
-    	view_fname_user.setText(p.getFname());
-    	view_lname_user.setText(p.getLname());
-    	view_mail_user.setText(p.getEmail());
-    	view_mob_user.setText(p.getPhone());
-    	view_pass_user.setText(p.getPsd());
-    	view_cnic_user.setText(p.getCnic());
-    	
-    	
+    	if(p1 != null) {
+				//	Passenger p = p1.PassengerGetInfo();
+					
+					view_fname_user.setText(p1.getFname());
+					view_lname_user.setText(p1.getLname());
+					view_mail_user.setText(p1.getEmail());
+					view_mob_user.setText(p1.getPhone());
+					view_pass_user.setText(p1.getPsd());
+					view_cnic_user.setText(p1.getCnic());
+					
+    	}
     }
     @SuppressWarnings("unchecked")
 	@FXML
@@ -550,7 +558,7 @@ void initialize()
         assert view_pass_user != null : "fx:id=\"view_pass_user\" was not injected: check your FXML file 'userinterface.fxml'.";
         
         fbook_err.setVisible(false);
-    	viewAccount();
+    	//login();
         try {
         	
         	// Add source

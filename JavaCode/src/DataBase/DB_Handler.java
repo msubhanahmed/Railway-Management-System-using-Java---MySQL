@@ -236,4 +236,46 @@ public class DB_Handler
 	
 	//----------------------------------------------------------------------------------
 
+	 public Passenger getAccount(String email) 
+	 {
+		 String q = "Select ID,FName,LName,Email,Mobile,psd,CNIC from passenger where Email='"+email+"'"; 
+			
+			try {	
+					Statement s = con.createStatement();
+					ResultSet r = s.executeQuery(q);
+					while(r.next())
+					{
+						Passenger a = new Passenger(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5),r.getString(6),r.getString(7));
+						
+						
+						
+						return a;
+					}
+				
+			    }  catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			return null;
+	 }
+
+	public Passenger insertAccount(String fname,String lname,String mail, String mob, String cnic,String pass) {
+		
+		
+		Statement s;
+		try {
+			s = con.createStatement();
+			
+			s.execute("Insert into Passenger Values ('"+fname+"','"+lname+"','"+mail+"','"+mob+"','"+cnic+"','"+pass+"')");			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return null;
+	}
+	 
+	 
 }

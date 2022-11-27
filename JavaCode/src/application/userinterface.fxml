@@ -185,7 +185,7 @@
                                                 <Label fx:id="login_pass" layoutX="188.0" layoutY="254.0" text="Password" />
                                                 <TextField fx:id="login_mob_user" layoutX="281.0" layoutY="211.0" promptText="03**********" />
                                                 <TextField fx:id="login_pass_user" accessibleRole="PASSWORD_FIELD" layoutX="281.0" layoutY="250.0" promptText="*****" />
-                                                <Button fx:id="login_submit_btn" layoutX="362.0" layoutY="296.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" text="Submit" />
+                                                <Button fx:id="login_submit_btn" layoutX="362.0" layoutY="296.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="68.0" text="Submit" />
                                                 <ImageView fx:id="acc_login_img" fitHeight="150.0" fitWidth="134.0" layoutX="226.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@login_img.png" />
