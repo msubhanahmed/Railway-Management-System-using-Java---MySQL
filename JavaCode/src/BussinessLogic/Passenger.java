@@ -1,29 +1,70 @@
 package BussinessLogic;
 
+import DataBase.DB_Handler;
+
 public class Passenger 
 {
-	private String ID;
-	private String name;
-	private String cnic;
-	private String phoneNo;
+	private int ID;
 	
-	public Passenger(String iD, String name, String cnic, String phoneNo) {
-		ID = iD;
-		this.name = name;
-		this.cnic = cnic;
-		this.phoneNo = phoneNo;
+	private String Fname;
+	private String Lname;
+	private String email;
+	private String phone;
+	private String psd;
+	private String cnic;
+	
+	
+	public Passenger() {}
+	public Passenger(int id,String fn, String ln, String mail, String phone, String pass ,String cnic) 
+	{
+		ID = id;
+		this.Fname = fn;
+		this.Lname = ln;
+		this.email = mail;
+		this.phone = phone;
+		this.psd = pass;
+		this.cnic  = cnic;
 	}
-	public String getID() {
+	public Passenger PassengerGetInfo()
+	{
+		DB_Handler d = new DB_Handler();
+		return d.getPassengerinfo();
+	}
+	public int getID() {
 		return ID;
 	}
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
-	public String getName() {
-		return name;
+	public String getFname() {
+		return Fname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFname(String fname) {
+		Fname = fname;
+	}
+	public String getLname() {
+		return Lname;
+	}
+	public void setLname(String lname) {
+		Lname = lname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getPsd() {
+		return psd;
+	}
+	public void setPsd(String psd) {
+		this.psd = psd;
 	}
 	public String getCnic() {
 		return cnic;
@@ -31,12 +72,4 @@ public class Passenger
 	public void setCnic(String cnic) {
 		this.cnic = cnic;
 	}
-	public String getPhoneNo() {
-		return phoneNo;
-	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-	
-	
 }

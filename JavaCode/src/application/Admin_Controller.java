@@ -2,10 +2,11 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import BussinessLogic.*;
-import BussinessLogic.Station;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
@@ -124,7 +126,7 @@ public class Admin_Controller {
     private TableColumn<?, ?> del_schedule_source_col;
 
     @FXML
-    private TableView<?> del_schedule_table;
+    private TableView<ScheduleEntry> del_schedule_table;
 
     @FXML
     private Button del_train_btn;
@@ -172,7 +174,7 @@ public class Admin_Controller {
     private Tab mng_train_tab;
 
     @FXML
-    private TableView<?> mng_train_table;
+    private TableView<PassengerTrain> mng_train_table;
 
     @FXML
     private TableColumn<?, ?> mng_train_type_col;
@@ -182,23 +184,87 @@ public class Admin_Controller {
 
     @FXML
     private TextField new_station_number;
-
+    
+    @FXML
+    private Button refresh_station_btn;
+    
     @FXML
     private Button refresh_station_table;
 
     @FXML
     private ChoiceBox<?> select_station_delete_ID;
+    
+    @FXML
+    private TableView<Station> station_table;
 
     Admin d2 = new Admin();
     void  account_info_tab()
     {
     	Admin d = d2.AdminGetInfo();
-    	acc_name.setText(d.getFname() + d.getLname()); 
+    	acc_name.setText(d.getFname() +" "+ d.getLname()); 
     	acc_cnic.setText(d.getCnic());
     	acc_email.setText(d.getEmail());
     	acc_mobile.setText(d.getPhone());
     	acc_password.setText(d.getPsd());
     }
+    @FXML
+    void Refresh_Station_table(ActionEvent e) 
+    {
+    	mng_station_ID_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    	mng_station_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	mng_station_phone_col.setCellValueFactory(new PropertyValueFactory<>("contact"));
+    
+		ObservableList<Station> list2 = FXCollections.observableArrayList();
+
+		for(Station s: TC.GetStations())
+		{
+			list2.add(s);
+		}
+	    station_table.setItems(list2);
+	}
+    
+    
+    public void RefreshScheduleDel(ActionEvent e) 
+    {
+    	del_schedule_ID_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    	del_schedule_source_col.setCellValueFactory(new PropertyValueFactory<>("Src"));
+    	del_schedule_dest_col.setCellValueFactory(new PropertyValueFactory<>("Dest"));
+    	del_schedule_arriv_col.setCellValueFactory(new PropertyValueFactory<>("arrival"));
+    	del_schedule_dept_col.setCellValueFactory(new PropertyValueFactory<>("dept"));
+    
+    	
+    	
+    	
+			ObservableList<ScheduleEntry> list3 = FXCollections.observableArrayList();
+			for(Station i : TC.GetStations()) {
+				
+						for(ScheduleEntry s: TC.GetSchedule(i.getName()))
+						{
+							list3.add(s);
+						}
+						
+			}
+			del_schedule_table.setItems(list3);
+			
+	}
+    
+    public void RefreshTrains(ActionEvent e) 
+    {
+    	mng_train_id_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    	mng_train_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	mng_train_type_col.setCellValueFactory(new PropertyValueFactory<>("Type"));
+    	mng_train_maxload_col.setCellValueFactory(new PropertyValueFactory<>("maxCapacity"));
+ 
+    	
+			ObservableList<PassengerTrain> list4 = FXCollections.observableArrayList();
+			for(PassengerTrain s: TC.getPTrains())
+			{
+				list4.add(s);
+			}
+			
+			mng_train_table.setItems(list4);
+			
+	}    
     @FXML
     void initialize() {
         assert ManageStation_Tab != null : "fx:id=\"ManageStation_Tab\" was not injected: check your FXML file 'AdminInterface.fxml'.";
@@ -269,6 +335,8 @@ public class Admin_Controller {
 			String name = s.getName();
 			list.add(name);
 		}
+		
+		
 		
 		
       

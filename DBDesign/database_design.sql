@@ -1,15 +1,17 @@
+
 create database railwaysystem;
 use railwaysystem;
-
+select * from ticket;
+select *from FreightBooking;
 create table passenger 
 (
 ID		integer 		primary key,
 FName 	varchar(255),
 LName 	varchar(255),
-CNIC 	varchar(13) 	unique,
 Email 	varchar(255),
 Mobile 	varchar(11),
-psd 	varchar(255)
+psd 	varchar(255),
+CNIC 	varchar(13) 	unique
 );
 create table station
 (
@@ -82,8 +84,8 @@ Insert Into StationAdmin values
 (  200945 , "Jawad" , "Ahmed" , "i200945@nu.edu.pk" , "03314440989" , "f@st200945","3740512345679");
 
 Insert Into Passenger values
-( 202445 , "Rafay" , "Zubair" , "4220112345678" , "i202445@nu.edu.pk" , "03001234567" , "f@st202445"),
-( 200660 , "Ubaid" , "Javed" , "4220112345679" , "i200660@nu.edu.pk" , "03001234567" , "f@st200660");
+( 202445 , "Rafay" , "Zubair" ,  "i202445@nu.edu.pk" , "03001234567" , "f@st202445","4220112345678" ),
+( 200660 , "Ubaid" , "Javed" , "i200660@nu.edu.pk" , "03001234567" , "f@st200660", "4220112345679" );
 
 Insert Into PassengerTrain values
 ( 1000 , "Sir Syed Express 108UP" , 755 ),
