@@ -383,6 +383,8 @@ public class UserController {
     		Sch_station_table.setItems(list);
     	}
     }
+    
+    	
     @FXML
     public void bookFreight(ActionEvent event)
     {
@@ -415,6 +417,32 @@ public class UserController {
     	{int fare = (Integer.parseInt(Cfare_seats_choice.getValue().toString()) * 1500);
     	Cfare_display.setText(String.valueOf(fare));
     	}
+    
+    /*
+    
+    Admin d2 = new Admin();
+    void  account_info_tab()
+    {
+    	Admin d = d2.AdminGetInfo();
+    	acc_name.setText(d.getFname() +" "+ d.getLname()); 
+    	acc_cnic.setText(d.getCnic());
+    	acc_email.setText(d.getEmail());
+    	acc_mobile.setText(d.getPhone());
+    	acc_password.setText(d.getPsd());
+    }*/
+    
+    Passenger p1 = new Passenger();
+    void viewAccount() {
+    	Passenger p = p1.PassengerGetInfo();
+    	
+    	view_fname_user.setText(p.getFname());
+    	view_lname_user.setText(p.getLname());
+    	view_mail_user.setText(p.getEmail());
+    	view_mob_user.setText(p.getPhone());
+    	view_pass_user.setText(p.getPsd());
+    	view_cnic_user.setText(p.getCnic());
+    	
+    	
     }
     @SuppressWarnings("unchecked")
 	@FXML
@@ -522,7 +550,7 @@ void initialize()
         assert view_pass_user != null : "fx:id=\"view_pass_user\" was not injected: check your FXML file 'userinterface.fxml'.";
         
         fbook_err.setVisible(false);
-		
+    	viewAccount();
         try {
         	
         	// Add source
@@ -608,7 +636,7 @@ void initialize()
 			}
 			
 			fbook_err.setVisible(false);
-			
+		
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

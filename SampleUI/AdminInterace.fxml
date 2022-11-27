@@ -40,7 +40,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="143.0" layoutY="125.0" prefHeight="166.0" prefWidth="436.0">
+                        <TableView fx:id="Schedule_table" layoutX="143.0" layoutY="125.0" prefHeight="166.0" prefWidth="436.0">
                           <columns>
                             <TableColumn fx:id="mng_station_ID_col" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="mng_station_name_col" prefWidth="106.0" text="Station Name" />
@@ -54,7 +54,7 @@
                         <Label fx:id="deletestationlabel" layoutX="14.0" layoutY="54.0" text="Delete Station" />
                         <Button fx:id="delete_station_btn" layoutX="298.0" layoutY="50.0" mnemonicParsing="false" text="Delete" />
                         <ChoiceBox fx:id="select_station_delete_ID" layoutX="143.0" layoutY="50.0" prefWidth="150.0" />
-                        <Button fx:id="refresh_station_table" layoutX="143.0" layoutY="87.0" mnemonicParsing="false" text="Refresh Table" />
+                        <Button fx:id="refresh_station_btn" layoutX="143.0" layoutY="87.0" mnemonicParsing="false" onAction="#Refresh_Station_table" text="Refresh Table" />
                      </children>
                   </AnchorPane>
             </content>

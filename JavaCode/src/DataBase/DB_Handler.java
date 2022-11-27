@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DB_Handler 
 {
 	private String name = "root";
-	private String pass = "Subh@n2004639";
+	private String pass = "jawad123";
 	private Connection con ;
 	
 	public DB_Handler() 
@@ -61,6 +61,8 @@ public class DB_Handler
 		}
 		return t;
 	}
+	
+	//----------------------------------------------------------------------------------
 	public Station getOneStation(int id )
 	{
 		try {
@@ -78,6 +80,11 @@ public class DB_Handler
 		}
 		return null;
 	}
+	
+	
+	//----------------------------------------------------------------------------------
+	
+	
 	public ArrayList<Station> loadAllStation()
 	{
 		ArrayList<Station> clist = new ArrayList<Station>();
@@ -100,6 +107,11 @@ public class DB_Handler
 		
 		return clist;
 	}
+	
+	
+	//----------------------------------------------------------------------------------
+	
+	
 	public ScheduleBoard getStationSchedule(int Station_ID)
 	{
 		ScheduleBoard sb = new ScheduleBoard();
@@ -126,6 +138,8 @@ public class DB_Handler
 		return sb;
 	}
 
+	
+	//----------------------------------------------------------------------------------
 	public void saveTicket(Ticket t)
 	{
 		String q = "Insert into Ticket values (?,?,?,?,?,?,?,?)";
@@ -146,6 +160,9 @@ public class DB_Handler
 			e.printStackTrace();
 		}
 	}
+	
+	
+	//----------------------------------------------------------------------------------
 	public void saveBooking(FreightBooking t , int PID)
 	{
 		String q = "Insert into FreightBooking values (?,?,?,?,?,?,?,?)";
@@ -168,6 +185,9 @@ public class DB_Handler
 	}
 
 
+	
+	//----------------------------------------------------------------------------------
+	
 	public Admin getAdmininfo() {
 			String q = "Select * from StationAdmin"; 
 			
@@ -188,4 +208,32 @@ public class DB_Handler
 		
 		
 	}
+	
+	
+	//----------------------------------------------------------------------------------
+
+	 public Passenger getPassengerinfo() {
+		String q = "Select * from passenger"; 
+		
+		try {	
+				Statement s = con.createStatement();
+				ResultSet r = s.executeQuery(q);
+				while(r.next())
+				{
+					Passenger a = new Passenger(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5),r.getString(6),r.getString(7));
+					return a;
+				}
+			
+		    }  catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+
 }
