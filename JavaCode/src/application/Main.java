@@ -9,13 +9,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.*;
+import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application {
 	FXMLLoader loader = new FXMLLoader();
 	Stage stg;
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		try {
 			stg = primaryStage;
 			Parent root = FXMLLoader.load(getClass().getResource("userinterface.fxml"));
@@ -28,44 +29,26 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		changeScene();
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
-	public void changeScene(String filename) throws IOException {
+	public void changeScene() throws IOException {
 		
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("AdminInterface.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stg.setTitle("UserInterface");
-			stg.setMaximized(true);
-			stg.setScene(scene);
-			stg.show();
-		} catch(Exception e) {
+		
+		try 
+		{
+			Parent pane = FXMLLoader.load(getClass().getResource("AdminInterface.fxml"));
+			stg.getScene().setRoot(pane);
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*
-		try {
-			FileInputStream fxmlStream = new FileInputStream("E:\\Classes\\SDA\\SemesterProject\\JavaCode\\src\\application\\AdminInterface.fxml");
-			Parent pane = loader.load(fxmlStream);
-			 
-			Scene scene = new Scene(pane,600,600);
-			currentStage.setScene(scene);
-			currentStage.show();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("File Not Found Exception.");
-			//e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("IO Exception.");
-			//e.printStackTrace();
-		}*/
 		
 	}
-
 
 }

@@ -16,8 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Admin_Controller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="application.Admin_Controller">
    <top>
       <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="660.0" style="-fx-background-color: #0f441a;" BorderPane.alignment="TOP_CENTER">
          <children>
@@ -31,22 +30,23 @@
                   <Image url="@../../../SampleUI/railwaysicon.jpg" />
                </image>
             </ImageView>
+            <Button fx:id="Switch_to_user" layoutX="605.0" layoutY="27.0" mnemonicParsing="false" onAction="#switch_to_userinterface" text="Switch Interface" />
          </children>
       </AnchorPane>
    </top>
    <center>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="375.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-         <tabs>
-            <Tab fx:id="ManageStation_Tab" text="Manage Stations">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <tabs>
+          <Tab fx:id="ManageStation_Tab" text="Manage Stations">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView layoutX="143.0" layoutY="125.0" prefHeight="166.0" prefWidth="436.0">
-                           <columns>
-                              <TableColumn fx:id="mng_station_ID_col" prefWidth="75.0" text="ID" />
-                              <TableColumn fx:id="mng_station_name_col" prefWidth="106.0" text="Station Name" />
+                          <columns>
+                            <TableColumn fx:id="mng_station_ID_col" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="mng_station_name_col" prefWidth="106.0" text="Station Name" />
                               <TableColumn fx:id="mng_station_phone_col" prefWidth="106.0" text="Phone" />
-                           </columns>
+                          </columns>
                         </TableView>
                         <Label fx:id="createstationlabel" layoutX="14.0" layoutY="20.0" text="Create New Station" />
                         <TextField fx:id="new_station_name" layoutX="143.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" promptText="Name" />
@@ -58,8 +58,8 @@
                         <Button fx:id="refresh_station_table" layoutX="143.0" layoutY="87.0" mnemonicParsing="false" text="Refresh Table" />
                      </children>
                   </AnchorPane>
-               </content>
-            </Tab>
+            </content>
+          </Tab>
             <Tab fx:id="mng_schedule_tab" text="Manage Schedule">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -113,15 +113,15 @@
                </content>
             </Tab>
             <Tab fx:id="account_info_tab" text="Account Information">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
                               <Accordion BorderPane.alignment="CENTER" />
                            </center>
                            <top>
-                              <AnchorPane prefHeight="371.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+                              <AnchorPane fx:id="acc_mobile" prefHeight="371.0" prefWidth="721.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <Label fx:id="acc_name_label" layoutX="110.0" layoutY="48.0" prefHeight="24.0" prefWidth="47.0" text="Name" />
                                     <Label fx:id="acc_email_label" layoutX="110.0" layoutY="136.0" text="Email Address" />
@@ -139,9 +139,9 @@
                         </BorderPane>
                      </children>
                   </AnchorPane>
-               </content>
+              </content>
             </Tab>
-         </tabs>
+        </tabs>
       </TabPane>
    </center>
    <bottom>

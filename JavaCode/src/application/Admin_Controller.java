@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Admin_Controller {
-	private Main m = new Main();
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -182,6 +181,7 @@ public class Admin_Controller {
     private ChoiceBox<?> select_station_delete_ID;
 
 
+    
     @FXML
     void initialize() {
         assert ManageStation_Tab != null : "fx:id=\"ManageStation_Tab\" was not injected: check your FXML file 'AdminInterface.fxml'.";
@@ -240,7 +240,7 @@ public class Admin_Controller {
         assert new_station_number != null : "fx:id=\"new_station_number\" was not injected: check your FXML file 'AdminInterface.fxml'.";
         assert refresh_station_table != null : "fx:id=\"refresh_station_table\" was not injected: check your FXML file 'AdminInterface.fxml'.";
         assert select_station_delete_ID != null : "fx:id=\"select_station_delete_ID\" was not injected: check your FXML file 'AdminInterface.fxml'.";
-
+        
     }
 
 }
