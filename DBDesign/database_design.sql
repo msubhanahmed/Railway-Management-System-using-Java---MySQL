@@ -65,6 +65,7 @@ create table StationAdmin
     psd		varchar(255),
     cnic    varchar(13)
 );
+select * from ticket;
 create table ScheduleEntry
 (
 	ID				integer		primary key,
@@ -101,6 +102,8 @@ Insert Into station values
 ( 3000 , "Lahore JN" , "03001234567"),
 ( 3001 , "Rawalpindi" , "03011234567"),
 ( 3002 , "Karachi Central" , "03021234567");
-
+select * from ticket;
+Select * from freightbooking;
+select * from passengertrain;
 Insert Into ScheduleEntry values
 (4000 , 1002 , 3002 , 3001 , "10-13-2022 16:48" , "10-14-2022 17:50");

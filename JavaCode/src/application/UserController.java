@@ -363,7 +363,7 @@ public class UserController {
     	}
     }
     @FXML
-    void getStationSchedule(ActionEvent event)
+    public void getStationSchedule(ActionEvent event)
     {
     	Sch_station_id.setCellValueFactory(new PropertyValueFactory<>("ID"));
         Sch_station_src.setCellValueFactory(new PropertyValueFactory<>("Src"));
@@ -406,11 +406,21 @@ public class UserController {
 	    	
     	}
     }
-    
+    @FXML
+    public void calculateFare(ActionEvent event)
+    {
+    	String src= Cfare_station_choice.getValue().toString();
+    	String dest = Cfare_dest_choice.getValue().toString();
+    	if(src != dest)
+    	{int fare = (Integer.parseInt(Cfare_seats_choice.getValue().toString()) * 1500);
+    	Cfare_display.setText(String.valueOf(fare));
+    	}
+    }
     @SuppressWarnings("unchecked")
 	@FXML
     
-	void initialize() 
+	
+void initialize() 
     {
         assert CalculateFare_tab != null : "fx:id=\"CalculateFare_tab\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert Cfare_calculate_btn != null : "fx:id=\"Cfare_calculate_btn\" was not injected: check your FXML file 'userinterface.fxml'.";
@@ -532,6 +542,23 @@ public class UserController {
 				String name = s.getName();
 				fbook_station_choice_lst.add(name);
 			}
+			@SuppressWarnings("unchecked")
+			ObservableList<String> Cfare_dest_choice_lst = (ObservableList<String>) Cfare_dest_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				Cfare_dest_choice_lst.add(name);
+			}
+			
+			@SuppressWarnings("unchecked")
+			ObservableList<String> Cfare_station_choice_lst = (ObservableList<String>) Cfare_station_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				Cfare_station_choice_lst.add(name);
+			}
+			
+			
 			
 			@SuppressWarnings("unchecked")
 			ObservableList<String> fbook_dest_choice_lst = (ObservableList<String>) fbook_dest_choice.getItems();
@@ -569,8 +596,15 @@ public class UserController {
 			ObservableList<String> list4 = (ObservableList<String>) TR_seats_choice.getItems();
 			for(int i=1 ; i<6 ; i++)
 			{
-				String name = i + "0";
+				String name = String.valueOf(i);
 				list4.add(name);
+			}
+			
+			ObservableList<String> Cfare_seats_choice_lst = (ObservableList<String>) Cfare_seats_choice.getItems();
+			for(int i=1 ; i<6 ; i++)
+			{
+				String name = String.valueOf(i);
+				Cfare_seats_choice_lst.add(name);
 			}
 			
 			fbook_err.setVisible(false);

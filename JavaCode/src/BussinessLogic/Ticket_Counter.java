@@ -50,6 +50,7 @@ public class Ticket_Counter
 	}
 	public Boolean reserveTicket(String source, String destination, String trainID, int s)
 	{
+		System.out.println(source+destination+trainID);
 		DB_Handler d = new DB_Handler();
 		Ticket t = new Ticket(source,destination,trainID,s*1500,s,LocalDateTime.now().toString());
 		ArrayList<Station> st = GetStations();
@@ -57,15 +58,25 @@ public class Ticket_Counter
 		{
 			if(i.getName() == source)
 			{
+				System.out.println("Station found!");
 				ArrayList<ScheduleEntry> se = GetSchedule(source);
 				for(ScheduleEntry j:se)
 				{
-					if(j.getDest() == destination && j.getTrain()==trainID)
-					{
-						d.saveTicket(t);
-						return true;
-					}
+					System.out.println(j.getDest()+destination);
+					//if(j.getDest() == destination)
+					//{
+						//if(j.getTrain().toString()==trainID.toString())
+						//{
+							//System.out.println("Schedule found!");
+							d.saveTicket(t);
+							return true;
+						//}
+					//}
 				}
+			}
+			else
+			{
+				System.out.println("Station Not found!");
 			}
 		}
 		return false;
