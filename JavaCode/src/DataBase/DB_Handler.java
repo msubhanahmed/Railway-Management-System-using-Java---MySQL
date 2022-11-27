@@ -146,4 +146,25 @@ public class DB_Handler
 			e.printStackTrace();
 		}
 	}
+	public void saveBooking(FreightBooking t , int PID)
+	{
+		String q = "Insert into FreightBooking values (?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement pq = con.prepareStatement(q);
+			pq.setInt(1, t.getID());
+			pq.setString(2,t.getValidity());
+			pq.setInt(3, t.getPrice());
+			pq.setString(4, t.getSrc());
+			pq.setString(5, t.getDest());
+			pq.setString(6, t.getType());
+			pq.setInt(7, t.getLoad());
+			pq.setInt(8, PID);
+			
+			pq.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
    <top>
@@ -128,7 +143,7 @@
                         <ChoiceBox fx:id="fbook_type_choice" layoutX="118.0" layoutY="108.0" prefWidth="150.0" />
                         <Label fx:id="fbook_type" layoutX="14.0" layoutY="109.0" prefHeight="23.0" prefWidth="81.0" text="Freight Type" />
                         <Label fx:id="fbook_weight" layoutX="14.0" layoutY="139.0" prefHeight="23.0" prefWidth="81.0" text="Weight" />
-                        <Button fx:id="fbook_submit_btn" layoutX="120.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Book Freight" />
+                        <Button fx:id="fbook_submit_btn" layoutX="120.0" layoutY="209.0" mnemonicParsing="false" onAction="#bookFreight" prefHeight="25.0" prefWidth="155.0" text="Book Freight" />
                         <Label fx:id="fbook_bank" layoutX="14.0" layoutY="168.0" prefHeight="23.0" prefWidth="102.0" text="Bank Account#" />
                         <TextField fx:id="fbook_bank_user" layoutX="119.0" layoutY="167.0" />
                         <TextField fx:id="fbook_weight_user" layoutX="119.0" layoutY="138.0" promptText="weight in kg's" />

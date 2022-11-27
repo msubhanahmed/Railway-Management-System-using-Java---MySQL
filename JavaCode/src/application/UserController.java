@@ -350,7 +350,17 @@ public class UserController {
     	String dest = TR_dest_choice.getValue().toString();
     	String train = TR_class_choice.getValue().toString();
     	String seats = TR_seats_choice.getValue().toString();
-    	TC.reserveTicket(src,dest,train,Integer.parseInt(seats));
+    	
+    	if(TC.reserveTicket(src,dest,train,Integer.parseInt(seats)) == true)
+		{
+    		TR_err_.setVisible(true);
+    		TR_err_.setText("Ticket Reserved Successfully!");
+		}
+    	else
+    	{
+    		TR_err_.setVisible(true);
+            TR_err_.setText("Ticket Reservation Failed!");
+    	}
     }
     @FXML
     void getStationSchedule(ActionEvent event)
@@ -373,9 +383,34 @@ public class UserController {
     		Sch_station_table.setItems(list);
     	}
     }
+    @FXML
+    public void bookFreight(ActionEvent event)
+    {
+    	if(fbook_bank_user.getText().toString() != null)
+    	{
+    		String src = fbook_station_choice.getValue().toString();
+	    	String dest = fbook_dest_choice.getValue().toString();
+	    	String type = fbook_type_choice.getValue().toString();
+	    	String load = fbook_weight_user.getText().toString();
+	    	
+	    	if(TC.BookFreight(type,Integer.parseInt(load),202445,src,dest) == true)
+			{
+	    		fbook_err.setVisible(true);
+	    		fbook_err.setText("Freight Booked Successfully!");
+			}
+	    	else
+	    	{
+	    		fbook_err.setVisible(true);
+	    		fbook_err.setText("Freight Reservation Failed!");
+	    	}
+	    	
+    	}
+    }
+    
     @SuppressWarnings("unchecked")
 	@FXML
-    void initialize() 
+    
+	void initialize() 
     {
         assert CalculateFare_tab != null : "fx:id=\"CalculateFare_tab\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert Cfare_calculate_btn != null : "fx:id=\"Cfare_calculate_btn\" was not injected: check your FXML file 'userinterface.fxml'.";
@@ -476,6 +511,8 @@ public class UserController {
         assert view_pass != null : "fx:id=\"view_pass\" was not injected: check your FXML file 'userinterface.fxml'.";
         assert view_pass_user != null : "fx:id=\"view_pass_user\" was not injected: check your FXML file 'userinterface.fxml'.";
         
+        fbook_err.setVisible(false);
+		
         try {
         	
         	// Add source
@@ -487,6 +524,30 @@ public class UserController {
 				String name = s.getName();
 				list.add(name);
 			}
+			
+			@SuppressWarnings("unchecked")
+			ObservableList<String> fbook_station_choice_lst = (ObservableList<String>) fbook_station_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				fbook_station_choice_lst.add(name);
+			}
+			
+			@SuppressWarnings("unchecked")
+			ObservableList<String> fbook_dest_choice_lst = (ObservableList<String>) fbook_dest_choice.getItems();
+			for(Station s: TC.GetStations())
+			{
+				String name = s.getName();
+				fbook_dest_choice_lst.add(name);
+			}
+			
+			@SuppressWarnings("unchecked")
+			ObservableList<String> fbook_type_choice_lst = (ObservableList<String>) fbook_type_choice.getItems();
+			fbook_type_choice_lst.add("Coal & Minerals");
+			fbook_type_choice_lst.add("Goods");
+			fbook_type_choice_lst.add("Flammable Liquid");
+			fbook_type_choice_lst.add("Minerals & Heavy Metals");
+			
 			
 			// Add Destination
 			
@@ -512,6 +573,7 @@ public class UserController {
 				list4.add(name);
 			}
 			
+			fbook_err.setVisible(false);
 			
 			
 		} catch (Exception e) {

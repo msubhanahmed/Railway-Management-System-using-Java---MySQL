@@ -45,14 +45,16 @@ create table Ticket
 );
 create table FreightBooking
 (
-	ID				integer 	primary key,
-    TrainId			integer,
+	ID				integer 	primary key	auto_increment,
     validity		varchar(255),
     price			integer,
+    src				varchar(255),
+    dest			varchar(255),
+    freighttype		varchar(255),
     registeredload	integer,
-    PassengerID		integer,
-    foreign key(TrainId) references FreightTrain(ID) on delete cascade
+    PassengerID		integer
 );
+
 create table StationAdmin
 (
 	ID		integer primary key,

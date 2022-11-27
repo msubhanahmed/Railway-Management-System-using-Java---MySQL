@@ -48,13 +48,37 @@ public class Ticket_Counter
 	{
 		return 0;
 	}
-	public void reserveTicket(String source, String destination, String trainID, int s)
+	public Boolean reserveTicket(String source, String destination, String trainID, int s)
 	{
 		DB_Handler d = new DB_Handler();
 		Ticket t = new Ticket(source,destination,trainID,s*1500,s,LocalDateTime.now().toString());
-		d.saveTicket(t);
+		ArrayList<Station> st = GetStations();
+		for(Station i: st)
+		{
+			if(i.getName() == source)
+			{
+				ArrayList<ScheduleEntry> se = GetSchedule(source);
+				for(ScheduleEntry j:se)
+				{
+					if(j.getDest() == destination && j.getTrain()==trainID)
+					{
+						d.saveTicket(t);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
-	
+	public Boolean BookFreight(String type, int load, int passengerID,String src , String dest)
+	{
+		DB_Handler d = new DB_Handler();
+		int price = 2000;
+		FreightBooking f = new FreightBooking(LocalDateTime.now().toString(),price,type,load,passengerID,src,dest);
+		d.saveBooking(f, passengerID);
+		return true;
+		
+	}
 	/*
 	 * Add Administrator Functions Here
 	 * 
