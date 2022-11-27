@@ -92,21 +92,30 @@ public class Ticket_Counter
 		return true;
 		
 	}
-	/*
-	 * Add Administrator Functions Here
-	 * 
-	 */
 	
 	
+	public  Passenger login( String email,String password) 
+	{
+		DB_Handler a = new DB_Handler();
+		Passenger p = a.getAccount(email);
+		String psd = p.getPsd();
+		if(  psd.equals(password ))
+		{
+			System.out.println("Account Successful LOGIN ");
+			return p;
+			
+		}
+		System.out.println("Account unsuccessful LOGIN ");
+		return null;
+	}
+
+	public Passenger Insert(String fname,String lname,String mail, String mob, String cnic,String pass  ) {
+		
+		DB_Handler a = new DB_Handler();
+		Passenger p = a.insertAccount(fname,lname,mail,mob,cnic,pass);
 	
+	return null;
 	
-	
-	
-	/*
-	 * Add Helping Functions Here No Business Logic Function Outside this class
-	 */
-	
-	
-	
+	}
 	
 }
