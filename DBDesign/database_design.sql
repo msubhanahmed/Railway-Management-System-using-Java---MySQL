@@ -60,7 +60,8 @@ create table StationAdmin
     Lname	varchar(255),
     email	varchar(255),
     phone	varchar(255),
-    psd		varchar(255)
+    psd		varchar(255),
+    cnic    varchar(13)
 );
 create table ScheduleEntry
 (
@@ -75,8 +76,8 @@ create table ScheduleEntry
 );
 
 Insert Into StationAdmin values
-(  200873 , "Muhammad" , "Subhan" , "i200873@nu.edu.pk" , "03010547875" , "f@st200873"),
-(  200945 , "Jawad" , "Ahmed" , "i200945@nu.edu.pk" , "03314440989" , "f@st200945");
+(  200873 , "Muhammad" , "Subhan" , "i200873@nu.edu.pk" , "03010547875" , "f@st200873","3740512345678"),
+(  200945 , "Jawad" , "Ahmed" , "i200945@nu.edu.pk" , "03314440989" , "f@st200945","3740512345679");
 
 Insert Into Passenger values
 ( 202445 , "Rafay" , "Zubair" , "4220112345678" , "i202445@nu.edu.pk" , "03001234567" , "f@st202445"),

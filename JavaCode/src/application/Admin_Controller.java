@@ -3,6 +3,10 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import BussinessLogic.*;
+import BussinessLogic.Station;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,7 +19,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
+
+
 public class Admin_Controller {
+	
+	Ticket_Counter TC = new Ticket_Counter();
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -180,8 +189,16 @@ public class Admin_Controller {
     @FXML
     private ChoiceBox<?> select_station_delete_ID;
 
-
-    
+    Admin d2 = new Admin();
+    void  account_info_tab()
+    {
+    	Admin d = d2.AdminGetInfo();
+    	acc_name.setText(d.getFname() + d.getLname()); 
+    	acc_cnic.setText(d.getCnic());
+    	acc_email.setText(d.getEmail());
+    	acc_mobile.setText(d.getPhone());
+    	acc_password.setText(d.getPsd());
+    }
     @FXML
     void initialize() {
         assert ManageStation_Tab != null : "fx:id=\"ManageStation_Tab\" was not injected: check your FXML file 'AdminInterface.fxml'.";
@@ -241,6 +258,21 @@ public class Admin_Controller {
         assert refresh_station_table != null : "fx:id=\"refresh_station_table\" was not injected: check your FXML file 'AdminInterface.fxml'.";
         assert select_station_delete_ID != null : "fx:id=\"select_station_delete_ID\" was not injected: check your FXML file 'AdminInterface.fxml'.";
         
+        
+        account_info_tab();
+        
+        
+    	@SuppressWarnings("unchecked")
+		ObservableList<String> list = (ObservableList<String>) select_station_delete_ID.getItems();
+		for(Station s: TC.GetStations())
+		{
+			String name = s.getName();
+			list.add(name);
+		}
+		
+		
+      
+       
     }
 
 }

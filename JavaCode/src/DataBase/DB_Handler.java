@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DB_Handler 
 {
 	private String name = "root";
-	private String pass = "Subh@n2004639";
+	private String pass = "jawad123";
 	private Connection con ;
 	
 	public DB_Handler() 
@@ -145,5 +145,26 @@ public class DB_Handler
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public Admin getAdmininfo() {
+			String q = "Select * from StationAdmin"; 
+			
+		try {	
+				Statement s = con.createStatement();
+				ResultSet r = s.executeQuery(q);
+				while(r.next())
+				{
+					Admin a = new Admin(r.getInt(1),r.getString(2),r.getString(3),r.getString(4),r.getString(5),r.getString(6),r.getString(7));
+					return a;
+				}
+			
+		    }  catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+		
+		
 	}
 }
