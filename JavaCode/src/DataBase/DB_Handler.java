@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DB_Handler 
 {
 	private String name = "root";
-	private String pass = "jawad123";
+	private String pass = "Subh@n2004639";
 	private Connection con ;
 	
 	public DB_Handler() 
@@ -43,6 +43,7 @@ public class DB_Handler
 		}
 		return null;
 	}
+	//----------------------------------------------------------------------------------	
 	public ArrayList<PassengerTrain> getAllTrain()
 	{
 		ArrayList<PassengerTrain> t = new ArrayList<PassengerTrain>();
@@ -233,7 +234,83 @@ public class DB_Handler
 		return null;
 	}
 	
-	
 	//----------------------------------------------------------------------------------
+
+	 public void deleteTrain(String name)
+	 {
+		 try {
+				Statement s = con.createStatement();
+				s.execute("Delete from PassengerTrain where Name='"+name+"'");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+
+
+	 public void insertTrain(int id,String name , String type, int load)
+	 {
+		 try {
+				Statement s = con.createStatement();
+				if(type == "Passenger Train")
+				{
+					s.execute("Insert into PassengerTrain values("+ id + ",'"+name+"',"+load+");");
+				}
+				else 
+				{
+					s.execute("Insert into FreightTrain values("+ id + ",'"+name+"',"+"'Passenger Train',"+load+");");
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+	 public void insertStation(int id,String name , String phone)
+	 {
+		 try {
+			Statement s = con.createStatement();
+			s.execute("Insert into station values("+ id + ",'"+name+"',"+phone+")");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+	 public void deleteStation(String name)
+	 {
+		 try {
+				Statement s = con.createStatement();
+				s.execute("Delete from station where Name='"+name+"'");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+
+	 public void insertSchedule(int ID , int TrainID, int Src , int dest , String arriv , String dept)
+	 {
+		 try {
+				Statement s = con.createStatement();
+				s.execute("Insert into ScheduleEntry values("+ ID + ",'" + name +"',"+TrainID+ ",'" + Src +"',"+ dest +"',"  + arriv +"',"  + dept +"'"+")");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
+	 public void deleteSchedule(int ID)
+	 {
+		 try {
+				Statement s = con.createStatement();
+				s.execute("Delete from ScheduleEntry where ID='"+ID+"'");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	 }
 
 }

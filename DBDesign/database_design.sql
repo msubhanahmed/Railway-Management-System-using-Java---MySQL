@@ -32,7 +32,6 @@ create table PassengerTrain
     Name			varchar(255)	UNIQUE,
     MaxCapacity		integer
 );
-
 create table Ticket
 (
 	ID			integer 	primary key,
@@ -80,12 +79,12 @@ create table ScheduleEntry
     foreign key(DestStation)	references	Station(ID) on delete cascade
 );
 
+
 Insert Into StationAdmin values
 (  200873 , "Muhammad" , "Subhan" , "i200873@nu.edu.pk" , "03010547875" , "f@st200873","3740512345678"),
 (  200945 , "Jawad" , "Ahmed" , "i200945@nu.edu.pk" , "03314440989" , "f@st200945","3740512345679");
 
-Insert Into Passenger values
-( 202445 , "Rafay" , "Zubair" ,  "i202445@nu.edu.pk" , "03001234567" , "f@st202445","4220112345678" ),
+Insert Into Passenger values ( 202445 , "Rafay" , "Zubair" ,  "i202445@nu.edu.pk" , "03001234567" , "f@st202445","4220112345678" ),
 ( 200660 , "Ubaid" , "Javed" , "i200660@nu.edu.pk" , "03001234567" , "f@st200660", "4220112345679" );
 
 Insert Into PassengerTrain values
@@ -107,5 +106,8 @@ Insert Into station values
 select * from ticket;
 Select * from freightbooking;
 select * from passengertrain;
+
 Insert Into ScheduleEntry values
-(4000 , 1002 , 3002 , 3001 , "10-13-2022 16:48" , "10-14-2022 17:50");
+(4000 , 1002 , 3002 , 3001 , "10-13-2022 16:48" , "10-14-2022 17:50"),
+(4001 , 1000 , 3000 , 3001 , "10-13-2022 16:48" , "10-14-2022 17:50"),
+(4002 , 1001 , 3001 , 3002 , "10-13-2022 16:48" , "10-14-2022 17:50");

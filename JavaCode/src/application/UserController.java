@@ -417,19 +417,7 @@ public class UserController {
     	{int fare = (Integer.parseInt(Cfare_seats_choice.getValue().toString()) * 1500);
     	Cfare_display.setText(String.valueOf(fare));
     	}
-    
-    /*
-    
-    Admin d2 = new Admin();
-    void  account_info_tab()
-    {
-    	Admin d = d2.AdminGetInfo();
-    	acc_name.setText(d.getFname() +" "+ d.getLname()); 
-    	acc_cnic.setText(d.getCnic());
-    	acc_email.setText(d.getEmail());
-    	acc_mobile.setText(d.getPhone());
-    	acc_password.setText(d.getPsd());
-    }*/
+    }
     
     Passenger p1 = new Passenger();
     void viewAccount() {

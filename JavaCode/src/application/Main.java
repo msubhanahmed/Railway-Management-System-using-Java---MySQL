@@ -29,7 +29,7 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		//changeScene();
+		changeScene();
 	}
 	
 	public static void main(String[] args) {

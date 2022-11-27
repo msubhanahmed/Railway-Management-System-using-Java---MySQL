@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 public class Admin_Controller {
 	
 	Ticket_Counter TC = new Ticket_Counter();
+	Admin a = new Admin();
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -197,10 +198,40 @@ public class Admin_Controller {
     @FXML
     private TableView<Station> station_table;
 
+    
     Admin d2 = new Admin();
-    void  account_info_tab()
+    public void insertStation(ActionEvent e)
+    {
+    	String name = new_station_name.getText().toString();
+    	String phone = new_station_number.getText().toString();
+    	a.insertStation(0, name, phone);
+    }
+    public void deleteStation(ActionEvent e)
+    {
+    	String name = select_station_delete_ID.getValue().toString();
+    	a.deleteStation(name);
+    }
+    
+    public void insertSchedule(ActionEvent e)
+    {
+    	int src = Integer.parseInt(crt_station_source.getText().toString());
+    	int dest = Integer.parseInt(crt_station_dest.getText().toString());
+    	String dept = crt_station_dept.getText().toString();
+    	String arriv = crt_station_arrival.getText().toString();
+    	a.insertSchedule(0, 1000 , src, dest, arriv, dept);
+    	
+    }
+    public void deleteSchedule(ActionEvent e)
+    {
+    	int ID = Integer.parseInt(del_schedule_ID_selector.getValue().toString());
+    	a.deleteSchedule(ID);
+    }
+    
+    
+    public void  account_info_tab()
     {
     	Admin d = d2.AdminGetInfo();
+    	a = d;
     	acc_name.setText(d.getFname() +" "+ d.getLname()); 
     	acc_cnic.setText(d.getCnic());
     	acc_email.setText(d.getEmail());
@@ -208,7 +239,7 @@ public class Admin_Controller {
     	acc_password.setText(d.getPsd());
     }
     @FXML
-    void Refresh_Station_table(ActionEvent e) 
+    public void Refresh_Station_table(ActionEvent e) 
     {
     	mng_station_ID_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
     	mng_station_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -221,9 +252,23 @@ public class Admin_Controller {
 			list2.add(s);
 		}
 	    station_table.setItems(list2);
+	    
+	    @SuppressWarnings("unchecked")
+		ObservableList<String> list = (ObservableList<String>) select_station_delete_ID.getItems();
+	    list.clear();
+		for(Station s: TC.GetStations())
+		{
+			String name = s.getName();
+			list.add(name);
+		}
 	}
-    
-    
+    @FXML
+    public void DeleteTrain(ActionEvent e)
+    {
+    	String trainname = del_train_id_selector.getValue().toString();
+    	a.deleteTrain(trainname);
+    }
+    @FXML
     public void RefreshScheduleDel(ActionEvent e) 
     {
     	del_schedule_ID_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -247,9 +292,22 @@ public class Admin_Controller {
 			del_schedule_table.setItems(list3);
 			
 	}
-    
+    public void InsertTrain(ActionEvent e)
+    {
+    	
+    	String name = add_train_name.getText().toString();
+    	int load = Integer.parseInt(add_train_maxload.getText().toString());
+    	String type = add_train_type_selector.getValue().toString();
+    	if(name == null || load<0 || load== 0 || type == null)
+    	{
+    		return;
+    	}
+    	a.insertTrain(name, type, load);
+    	RefreshTrains(e);
+    }
     public void RefreshTrains(ActionEvent e) 
     {
+    	
     	mng_train_id_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
     	mng_train_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
     	mng_train_type_col.setCellValueFactory(new PropertyValueFactory<>("Type"));
@@ -263,6 +321,16 @@ public class Admin_Controller {
 			}
 			
 			mng_train_table.setItems(list4);
+			
+			@SuppressWarnings("unchecked")
+			ObservableList<String> del_train_id_selector_lst = (ObservableList<String>) del_train_id_selector.getItems();
+			del_train_id_selector_lst.clear();
+			for(PassengerTrain s: TC.getPTrains())
+			{
+				String name = s.getName();
+				del_train_id_selector_lst.add(name);
+			}
+			
 			
 	}    
     @FXML
@@ -327,14 +395,12 @@ public class Admin_Controller {
         
         account_info_tab();
         
-        
-    	@SuppressWarnings("unchecked")
-		ObservableList<String> list = (ObservableList<String>) select_station_delete_ID.getItems();
-		for(Station s: TC.GetStations())
-		{
-			String name = s.getName();
-			list.add(name);
-		}
+		
+		ObservableList<String> add_train_type_selector_lst = (ObservableList<String>) add_train_type_selector.getItems();
+		add_train_type_selector_lst.add("Passenger Train");
+		add_train_type_selector_lst.add("Freight Train");
+		
+		account_info_tab();
 		
 		
 		

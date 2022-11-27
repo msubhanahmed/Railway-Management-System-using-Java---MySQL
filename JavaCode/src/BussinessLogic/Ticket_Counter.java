@@ -26,7 +26,8 @@ public class Ticket_Counter
 	}
 	public ArrayList<ScheduleEntry> GetSchedule(String name)
 	{
-		for(Station i : stlist.getSl())
+		DB_Handler d = new DB_Handler();
+		for(Station i : d.loadAllStation() )
 		{
 			if(i.getName()==name)
 			{
@@ -37,7 +38,8 @@ public class Ticket_Counter
 	}
 	public ArrayList<Station> GetStations(/* Add Necessary Arguments */)
 	{
-		return stlist.getSl();
+		DB_Handler d = new DB_Handler();
+		return d.loadAllStation();
 	}
 	public ArrayList<PassengerTrain> getPTrains()
 	{

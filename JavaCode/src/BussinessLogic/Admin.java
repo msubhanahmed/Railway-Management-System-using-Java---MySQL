@@ -1,5 +1,8 @@
 package BussinessLogic;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import DataBase.DB_Handler;
 
 public class Admin 
@@ -11,8 +14,8 @@ public class Admin
 	private String phone;
 	private String psd;
 	private String cnic;
-	
-	public Admin() 
+	private static int counter = 2000;
+ 	public Admin() 
 	{
 		
 		
@@ -105,6 +108,40 @@ public class Admin
 		this.psd = psd;
 	}
 	
-	
+	public void deleteTrain(String name)
+	{
+		DB_Handler d = new DB_Handler();
+		d.deleteTrain(name);
+	}
+	public void insertTrain(String name , String type , int load)
+	{
+		DB_Handler d = new DB_Handler();
+		++counter;
+		d.insertTrain(counter , name,type,load);
+	}
+
+	public void insertStation(int id,String name , String phone)
+	 {
+		DB_Handler d = new DB_Handler();
+		++counter;
+		d.insertStation(counter , name,phone);
+	 }
+	 public void deleteStation(String name)
+	 {
+		DB_Handler d = new DB_Handler();
+		d.deleteStation(name);
+	 }
+
+	 public void insertSchedule(int ID , int TrainID, int Src , int dest , String arriv , String dept)
+	 {
+		DB_Handler d = new DB_Handler();
+		++counter;
+		d.insertSchedule(counter ,1000 ,d.getOneStation(Src).getID(),d.getOneStation(dest).getID(),arriv,dept);
+	 }
+	 public void deleteSchedule(int ID)
+	 {
+		DB_Handler d = new DB_Handler();
+		d.deleteSchedule(ID);
+	 }
 
 }

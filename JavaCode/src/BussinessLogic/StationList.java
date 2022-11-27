@@ -13,6 +13,7 @@ public class StationList
 	}
 
 	public ArrayList<Station> getSl() {
+		
 		return sl;
 	}
 
